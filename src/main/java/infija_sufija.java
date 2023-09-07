@@ -7,6 +7,7 @@ public class infija_sufija {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
+        Stack<String> pila = new Stack<>();
         String opr;
 
         while (true){
@@ -19,6 +20,27 @@ public class infija_sufija {
             }
 
             StringTokenizer token = new StringTokenizer(opr,"(){}[]+-*/", true);
+
+            while (token.hasMoreTokens()){
+                String toks = token.nextToken();
+                switch (toks){
+                    case "(":
+                    case "[":
+                    case "{":
+                        pila.push(toks);
+                        break;
+                    case ")":
+                    case "]":
+                    case "}":
+                        if (pila.isEmpty()){
+                            System.out.println("ERROR EN LA EXPRESION");
+                        }else{
+                            pila.pop();
+                        }
+                        break;
+                }
+
+            }
 
         }
 
