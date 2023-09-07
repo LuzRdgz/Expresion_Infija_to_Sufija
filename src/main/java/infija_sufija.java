@@ -23,21 +23,15 @@ public class infija_sufija {
 
             while (token.hasMoreTokens()){
                 String toks = token.nextToken();
-                switch (toks){
-                    case "(":
-                    case "[":
-                    case "{":
-                        pila.push(toks);
-                        break;
-                    case ")":
-                    case "]":
-                    case "}":
-                        if (pila.isEmpty()){
+                switch (toks) {
+                    case "(", "[", "{" -> pila.push(toks);
+                    case ")", "]", "}" -> {
+                        if (pila.isEmpty()) {
                             System.out.println("ERROR EN LA EXPRESION");
-                        }else{
+                        } else {
                             pila.pop();
                         }
-                        break;
+                    }
                 }
 
             }
